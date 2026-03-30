@@ -1,0 +1,207 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f9f9f9;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.btn {
+    background: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+}
+
+.hero-text {
+    max-width: 500px;
+}
+
+.hero-text h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #555;
+}
+
+.btn.big {
+    padding: 12px 25px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* Image */
+.hero-image img {
+    width: 350px;
+}
+
+/* Features */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #eee;
+}
+
+
+/* AUTH PAGES */
+.auth-body {
+    background: linear-gradient(135deg, #4CAF50, #2ecc71);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container {
+    display: flex;
+    width: 800px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.auth-left {
+    background: #4CAF50;
+    color: white;
+    padding: 40px;
+    width: 50%;
+}
+
+.auth-right {
+    width: 50%;
+    padding: 40px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* FORM PAGE */
+.form-container {
+    width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+/* RESUME PAGE */
+.resume-body {
+    background: #eaeaea;
+    font-family: Arial;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: #4CAF50;
+    color: white;
+}
+
+.resume-container {
+    width: 800px;
+    margin: 30px auto;
+    display: flex;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* LEFT SIDE */
+.left {
+    width: 35%;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+}
+
+.left h1 {
+    margin-bottom: 5px;
+}
+
+.left h3 {
+    margin-top: 20px;
+    border-bottom: 1px solid white;
+}
+
+/* RIGHT SIDE */
+.right {
+    width: 65%;
+    padding: 20px;
+}
+
+.right h2 {
+    border-bottom: 2px solid #4CAF50;
+    margin-bottom: 10px;
+}
+
+.block {
+    margin-bottom: 15px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Build Your Resume</h1>
+
+    <form method="POST">
+
+        <div class="form-group">
+            <h3>Education</h3>
+            <input name="degree" placeholder="Degree">
+            <input name="institution" placeholder="Institution">
+        </div>
+
+        <div class="form-group">
+            <h3>Skills</h3>
+            <input name="skill" placeholder="Skill (e.g. Python)">
+        </div>
+
+        <div class="form-group">
+            <h3>Projects</h3>
+            <input name="project" placeholder="Project Title">
+        </div>
+
+        <button class="btn big">Generate Resume</button>
+    </form>
+</div>
+
+</body>
+</html>

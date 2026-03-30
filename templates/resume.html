@@ -1,0 +1,56 @@
+=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Resume</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="resume-body">
+
+<div class="top-bar">
+    <h2>Your Resume</h2>
+    <p>Total Resumes Created: <b>{{ count }}</b></p>
+</div>
+
+<div class="resume-container">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <h1>{{ user[1] }}</h1>
+        <p>{{ user[2] }}</p>
+
+        <h3>Contact</h3>
+        <p>{{ user[4] }}</p>
+        <p>{{ user[5] }}</p>
+
+        <h3>Skills</h3>
+        <ul>
+            {% for s in skills %}
+            <li>{{ s[2] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right">
+
+        <h2>Education</h2>
+        {% for e in edu %}
+        <div class="block">
+            <b>{{ e[2] }}</b>
+            <p>{{ e[3] }}</p>
+        </div>
+        {% endfor %}
+
+        <h2>Projects</h2>
+        {% for p in projects %}
+        <div class="block">
+            <b>{{ p[2] }}</b>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
