@@ -6,28 +6,48 @@
 </head>
 <body>
 
-<div class="form-container">
-    <h1>Build Your Resume</h1>
+    <!-- Navbar -->
+
+    <nav style="padding: 36px 80px; font-size: 2.2rem; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="font-size: 2.6rem; font-weight: 700; margin: 0;">ResumeBuilder</h2>
+        <div>
+            <a href="/resume" style="font-size: 1.5rem; margin-right: 32px; padding: 14px 36px; border-radius: 12px; text-decoration: none; color: #333; font-weight: 600; background: #f3f4f6; transition: background 0.2s;">My Resumes</a>
+            <a href="/logout" style="font-size: 1.5rem; padding: 14px 36px; border-radius: 12px; text-decoration: none; color: white; font-weight: 700; background: #4CAF50; transition: background 0.2s;">Logout</a>
+        </div>
+    </nav>
+
+<div class="form-container" style="width: 650px; margin: 60px auto; background: white; padding: 50px 60px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.10);">
+    <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 32px;">Build Your Resume</h1>
 
     <form method="POST">
 
-        <div class="form-group">
-            <h3>Education</h3>
-            <input name="degree" placeholder="Degree">
-            <input name="institution" placeholder="Institution">
+        <div class="form-group" style="margin-bottom: 32px;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">Personal Information</h3>
+            <input name="name" placeholder="Full Name" required style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;">
+            <input name="email" placeholder="Email" required style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;">
+            <input name="phone" placeholder="Phone Number" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;">
+            <textarea name="summary" placeholder="Professional Summary" rows="4" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;"></textarea>
         </div>
 
-        <div class="form-group">
-            <h3>Skills</h3>
-            <input name="skill" placeholder="Skill (e.g. Python)">
+        <div class="form-group" style="margin-bottom: 32px;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">Education</h3>
+            <input name="degree" placeholder="Degree (e.g. Bachelor's in Computer Science)" required style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;">
+            <input name="institution" placeholder="Institution (e.g. University of XYZ)" required style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;">
+            <input name="edu_start" placeholder="Start Year (e.g. 2020)" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;">
+            <input name="edu_end" placeholder="End Year (e.g. 2024)" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;">
         </div>
 
-        <div class="form-group">
-            <h3>Projects</h3>
-            <input name="project" placeholder="Project Title">
+        <div class="form-group" style="margin-bottom: 32px;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">Skills</h3>
+            <textarea name="skills" placeholder="Skills (comma separated, e.g. Python, JavaScript, SQL)" rows="3" required style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;"></textarea>
         </div>
 
-        <button class="btn big">Generate Resume</button>
+        <div class="form-group" style="margin-bottom: 32px;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">Projects</h3>
+            <textarea name="projects" placeholder="Projects (comma separated, e.g. Resume Builder App, E-commerce Website)" rows="3" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;"></textarea>
+        </div>
+
+        <button class="btn big" style="font-size: 1.35rem; padding: 20px; border-radius: 12px; background: #4CAF50; color: white; border: none; width: 100%; font-weight: 700; letter-spacing: 1px;">Generate Resume</button>
     </form>
 </div>
 
