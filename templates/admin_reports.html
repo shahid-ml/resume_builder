@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Reports - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .admin-nav {
+            background: #2d3748;
+            color: white;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .admin-nav h2 {
+            margin: 0;
+            display: inline-block;
+        }
+        .admin-nav .back {
+            float: right;
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        .admin-nav .logout {
+            float: right;
+            background: #e53e3e;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .report-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+        }
+        .report-section h3 {
+            margin-top: 0;
+            color: #2d3748;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 0.5rem;
+        }
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .report-table th, .report-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .report-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        .admin-badge {
+            background: #e53e3e;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-item {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+        .stat-label {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body style="background: #f5f7fa;">
+    <div class="admin-nav">
+        <h2>Reports</h2>
+        <a href="/admin" class="back">Back to Dashboard</a>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="stats-summary">
+            <div class="stat-item">
+                <span class="stat-number">{{ users|length }}</span>
+                <span class="stat-label">Total Users</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">{{ resumes|length }}</span>
+                <span class="stat-label">Total Resumes</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">{{ users|selectattr('3')|list|length }}</span>
+                <span class="stat-label">Admin Users</span>
+            </div>
+        </div>
+
+        <div class="report-section">
+            <h3>Users Report</h3>
+            <a href="/admin/reports/download/users/csv" style="background: #4CAF50; color: white; padding: 0.5rem 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 1rem; display: inline-block;">Download Users CSV</a>
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user[0] }}</td>
+                        <td>{{ user[1] }}</td>
+                        <td>{{ user[2] }}</td>
+                        <td>
+                            {% if user[3] %}
+                            <span class="admin-badge">ADMIN</span>
+                            {% else %}
+                            User
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="report-section">
+            <h3>Resumes Report</h3>
+            <a href="/admin/reports/download/resumes/csv" style="background: #4CAF50; color: white; padding: 0.5rem 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 1rem; display: inline-block;">Download Resumes CSV</a>
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>User Name</th>
+                        <th>User Email</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for resume in resumes %}
+                    <tr>
+                        <td>{{ resume[0] }}</td>
+                        <td>{{ resume[1] }}</td>
+                        <td>{{ resume[2] }}</td>
+                        <td>{{ resume[3] }}</td>
+                        <td>{{ resume[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Dashboard - ResumeBuilder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .admin-nav {
+            background: #2d3748;
+            color: white;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .admin-nav h2 {
+            margin: 0;
+            display: inline-block;
+        }
+        .admin-nav .logout {
+            float: right;
+            background: #e53e3e;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        .recent-users {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .recent-users h3 {
+            margin-top: 0;
+            color: #2d3748;
+        }
+        .user-item {
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-item:last-child {
+            border-bottom: none;
+        }
+        .admin-badge {
+            background: #e53e3e;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+        .admin-links {
+            margin-top: 2rem;
+        }
+        .admin-links a {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+        .admin-links a:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body style="background: #f5f7fa;">
+    <div class="admin-nav">
+        <h2>Admin Dashboard</h2>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">{{ total_users }}</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ total_resumes }}</div>
+                <div class="stat-label">Total Resumes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ total_admins }}</div>
+                <div class="stat-label">Admin Users</div>
+            </div>
+        </div>
+
+        <div class="recent-users">
+            <h3>Recent Users</h3>
+            {% for user in recent_users %}
+            <div class="user-item">
+                <div>
+                    <strong>{{ user[1] }}</strong> - {{ user[2] }}
+                    {% if user[3] %}
+                    <span class="admin-badge">ADMIN</span>
+                    {% endif %}
+                </div>
+                <a href="/admin/user/{{ user[0] }}" style="color: #4CAF50; text-decoration: none;">View</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="admin-links">
+            <a href="/admin/users">Manage Users</a>
+            <a href="/admin/resumes">Manage Resumes</a>
+            <a href="/admin/reports">Reports</a>
+            <a href="/">Back to Site</a>
+        </div>
+    </div>
+</body>
+</html>

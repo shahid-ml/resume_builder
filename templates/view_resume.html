@@ -118,7 +118,15 @@
             <div class="resume-left">
                 <div class="resume-section">
                     <h2>Experience</h2>
-                    <div style="color: #888; font-size: 14px;">(Add experience section in dashboard to show here)</div>
+                    {% for e in experience %}
+                    <div style="margin-bottom: 15px;">
+                        <div class="resume-label">{{ e[3] }} at {{ e[4] }}</div>
+                        <div style="font-size: 14px; color: #666;">{{ e[5] }} - {{ e[6] if e[6] else 'Present' }}</div>
+                        <div style="margin-top: 5px;">{{ e[7] }}</div>
+                    </div>
+                    {% else %}
+                    <div style="color: #888; font-size: 14px;">No experience added yet.</div>
+                    {% endfor %}
                 </div>
                 <div class="resume-section">
                     <h2>Education</h2>
@@ -144,23 +152,31 @@
                 <div class="resume-section">
                     <h2>Key Achievements</h2>
                     <ul class="resume-list">
-                        <li>Your Achievement</li>
-                        <li>Your Achievement</li>
-                        <li>Your Achievement</li>
+                        {% for a in achievements %}
+                        <li>{{ a[3] }}</li>
+                        {% else %}
+                        <li>No achievements added yet.</li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="resume-section">
                     <h2>Courses</h2>
                     <ul class="resume-list">
-                        <li>Course Title - Institution</li>
-                        <li>Course Title - Institution</li>
+                        {% for c in courses %}
+                        <li>{{ c[3] }} - {{ c[4] }}</li>
+                        {% else %}
+                        <li>No courses added yet.</li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="resume-section">
                     <h2>Interests</h2>
                     <ul class="resume-list">
-                        <li>Career Interest / Passion</li>
-                        <li>Career Interest / Passion</li>
+                        {% for i in interests %}
+                        <li>{{ i[3] }}</li>
+                        {% else %}
+                        <li>No interests added yet.</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

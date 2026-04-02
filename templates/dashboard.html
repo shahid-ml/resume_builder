@@ -11,6 +11,9 @@
     <nav style="padding: 36px 80px; font-size: 2.2rem; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;">
         <h2 style="font-size: 2.6rem; font-weight: 700; margin: 0;">ResumeBuilder</h2>
         <div>
+            {% if is_admin %}
+            <a href="/admin" style="font-size: 1.5rem; margin-right: 32px; padding: 14px 36px; border-radius: 12px; text-decoration: none; color: white; font-weight: 600; background: #e53e3e; transition: background 0.2s;">Admin Panel</a>
+            {% endif %}
             <a href="/resume" style="font-size: 1.5rem; margin-right: 32px; padding: 14px 36px; border-radius: 12px; text-decoration: none; color: #333; font-weight: 600; background: #f3f4f6; transition: background 0.2s;">My Resumes</a>
             <a href="/logout" style="font-size: 1.5rem; padding: 14px 36px; border-radius: 12px; text-decoration: none; color: white; font-weight: 700; background: #4CAF50; transition: background 0.2s;">Logout</a>
         </div>
@@ -45,6 +48,27 @@
         <div class="form-group" style="margin-bottom: 32px;">
             <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">Projects</h3>
             <textarea name="projects" placeholder="Projects (comma separated, e.g. Resume Builder App, E-commerce Website)" rows="3" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 32px;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">Experience</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Enter each experience on a new line in format: Job Title - Company - Start Date - End Date - Description</p>
+            <textarea name="experience" placeholder="e.g. Software Engineer - ABC Corp - 2020 - 2023 - Developed web applications using Python and Flask" rows="4" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 32px;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">Key Achievements</h3>
+            <textarea name="achievements" placeholder="Achievements (one per line, e.g. Increased website traffic by 50%)" rows="3" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 32px;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">Courses</h3>
+            <textarea name="courses" placeholder="Courses (one per line, e.g. Machine Learning - Coursera)" rows="3" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 32px;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">Interests</h3>
+            <textarea name="interests" placeholder="Interests (one per line, e.g. Reading, Traveling)" rows="3" style="font-size: 1.15rem; padding: 18px; margin-bottom: 14px; border-radius: 10px;"></textarea>
         </div>
 
         <button class="btn big" style="font-size: 1.35rem; padding: 20px; border-radius: 12px; background: #4CAF50; color: white; border: none; width: 100%; font-weight: 700; letter-spacing: 1px;">Generate Resume</button>

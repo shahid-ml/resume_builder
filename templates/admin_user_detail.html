@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Details - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .admin-nav {
+            background: #2d3748;
+            color: white;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .admin-nav h2 {
+            margin: 0;
+            display: inline-block;
+        }
+        .admin-nav .back {
+            float: right;
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        .admin-nav .logout {
+            float: right;
+            background: #e53e3e;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .user-info, .user-resumes {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .user-info h3, .user-resumes h3 {
+            margin-top: 0;
+            color: #2d3748;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .info-item {
+            margin-bottom: 1rem;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #666;
+        }
+        .admin-badge {
+            background: #e53e3e;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+        .resume-item {
+            padding: 1rem;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .resume-title {
+            font-weight: bold;
+            color: #2d3748;
+        }
+        .resume-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .view-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body style="background: #f5f7fa;">
+    <div class="admin-nav">
+        <h2>User Details</h2>
+        <a href="/admin/users" class="back">Back to Users</a>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+
+    <div style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+        <div class="user-info">
+            <h3>User Information</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">User ID:</div>
+                    <div>{{ user[0] }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Name:</div>
+                    <div>{{ user[1] }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Email:</div>
+                    <div>{{ user[2] }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Contact:</div>
+                    <div>{{ user[4] or 'Not provided' }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Address:</div>
+                    <div>{{ user[5] or 'Not provided' }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Role:</div>
+                    <div>
+                        {% if user[6] %}
+                        <span class="admin-badge">ADMIN</span>
+                        {% else %}
+                        Regular User
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-resumes">
+            <h3>User Resumes ({{ resumes|length }})</h3>
+            {% if resumes %}
+                {% for resume in resumes %}
+                <div class="resume-item">
+                    <div>
+                        <div class="resume-title">{{ resume[2] or 'Untitled Resume' }}</div>
+                        <div class="resume-date">Created: {{ resume[5] or 'Unknown' }}</div>
+                    </div>
+                    <a href="/resume/{{ resume[0] }}" class="view-btn" target="_blank">View Resume</a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>This user has not created any resumes yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
